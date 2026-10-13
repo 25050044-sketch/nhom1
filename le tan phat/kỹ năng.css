@@ -1,0 +1,93 @@
+/* ==========================================
+   NỀN VÀ PHÔNG CHỮ CHÍNH
+   ========================================== */
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url("back\ ground\ 1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.skills-section {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+/* Thanh gạch chân tiêu đề */
+.title-underline {
+  width: 70px;
+  height: 4px;
+  background: linear-gradient(90deg, #0d6efd, #0dcaf0);
+  border-radius: 2px;
+}
+
+/* ==========================================
+   THẺ CARD CHÍNH (GLASSMORPHISM EFFECT)
+   ========================================== */
+.custom-card {
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: border-color 0.3s ease;
+}
+
+.custom-card:hover {
+  border-color: rgba(13, 110, 253, 0.4);
+}
+
+/* Ô nội dung bên trong mục tiêu */
+.inner-box {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.inner-box:hover {
+  transform: translateX(4px);
+  background: rgba(15, 23, 42, 0.85);
+}
+
+/* ==========================================
+   THẺ KỸ NĂNG & MÀU ICON CHUẨN HÃNG
+   ========================================== */
+.skill-card {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  background: rgba(30, 41, 59, 0.9);
+  border-color: rgba(13, 110, 253, 0.5);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.skill-icon {
+  font-size: 2.4rem;
+  display: block;
+}
+
+/* Color Palette cho các biểu tượng công nghệ */
+.html-icon {
+  color: #e34f26;
+}
+.css-icon {
+  color: #1572b6;
+}
+.js-icon {
+  color: #f7df1e;
+}
+.python-icon {
+  color: #3776ab;
+}
+.java-icon {
+  color: #f89820;
+}
+.git-icon {
+  color: #f05032;
+}

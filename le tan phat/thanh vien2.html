@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Cá Nhân - Frontend Developer</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="ảnh cá nhân(1).png">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- File CSS Tách Riêng -->
+    <link rel="stylesheet" href="bài thiết kế web.css">
+</head>
+<body>
+
+    <!-- I. HEADER / NAVBAR / BANNER -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">DevPortfolio.</div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="giới thiệu.html">Giới thiệu</a></li>
+                    <li><a href="kỹ năng.html">Kỹ năng</a></li>
+                    <li><a href="kinh nghiệm.html">Kinh nghiệm</a></li>
+                    <li><a href="dự án.html">Dự án</a></li>
+                    <li><a href="liên hệ.html">Liên hệ</a></li>
+                </ul>
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <button class="theme-toggle-btn" id="themeToggle" title="Đổi giao diện">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
+                    <div class="hamburger" id="hamburger">
+                        <i class="fa-solid fa-bars"></i>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- I & II. GIỚI THIỆU BẢN THÂN (HERO SECTION) -->
+        <section id="about" class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h3>Xin chào, tôi là</h3>
+                    <h1>Lê Tấn Phát</h1>
+                    <p>Lập trình viên Web Frontend tương lai với đam mê tạo ra các giao diện hiện đại, tối ưu trải nghiệm người dùng và responsive tốt trên mọi thiết bị.</p>
+                    <a href="#contact" class="btn">Liên hệ ngay</a>
+                </div>
+                <div class="hero-avatar">
+                    <img src="ảnh cá nhân(1).png" alt="Ảnh đại diện Nguyễn Văn A" class="avatar-img">
+                </div>
+            </div>
+        </section>
+
+        <!-- I. MỤC TIÊU NGHỀ NGHIỆP & KỸ NĂNG -->
+        <section id="skills">
+            <h2 class="section-title">Tổng Quan Bản Thân</h2>
+            <div class="grid-2">
+                <!-- Mục tiêu nghề nghiệp -->
+                <div class="card">
+                    <h3 style="margin-bottom: 15px; color: var(--primary-color);"><i class="fa-solid fa-bullseye"></i> Mục tiêu nghề nghiệp</h3>
+                    <p style="margin-bottom: 10px;"><strong>Ngắn hạn:</strong> Hoàn thiện kỹ năng HTML5, CSS3, JavaScript ES6+, tiếp thu tư duy thiết kế UX/UI và thực tập tại vị trí Frontend Developer.</p>
+                    <p><strong>Dài hạn:</strong> Trở thành Fullstack Developer chuyên nghiệp, thành thạo các Framework như React / Next.js và đóng góp cho các dự án quy mô lớn.</p>
+                </div>
+
+                <!-- Kỹ năng -->
+                <div class="card">
+                    <h3 style="margin-bottom: 15px; color: var(--primary-color);"><i class="fa-solid fa-code"></i> Kỹ năng chuyên môn</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <i class="fa-brands fa-html5"></i>
+                            <div>HTML5</div>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fa-brands fa-css3-alt"></i>
+                            <div>CSS3</div>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fa-brands fa-js"></i>
+                            <div>JavaScript</div>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fa-brands fa-python"></i>
+                            <div>Python</div>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fa-brands fa-java"></i>
+                            <div>Java</div>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fa-brands fa-git-alt"></i>
+                            <div>Git / GitHub</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- I. HỌC VẤN / KINH NGHIỆM / CHỨNG CHỈ -->
+        <section id="experience">
+            <h2 class="section-title">Học Vấn & Chứng Chỉ</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3 style="margin-bottom: 20px; color: var(--primary-color);"><i class="fa-solid fa-graduation-cap"></i> Học vấn & Hoạt động</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h4>Cử nhân Công nghệ Thông tin</h4>
+                            <span>2022 - Hiện tại | Đại học CNTT</span>
+                            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 5px;">GPA: 3.5/4.0 - Chuyên ngành Kỹ thuật Phần mềm.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>Thành viên CLB Lập trình Web</h4>
+                            <span>2023 - 2024</span>
+                            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 5px;">Tham gia hỗ trợ tổ chức các buổi workshop chia sẻ về HTML/CSS cho sinh viên khóa mới.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 style="margin-bottom: 20px; color: var(--primary-color);"><i class="fa-solid fa-award"></i> Chứng chỉ & Sở thích</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h4>Responsive Web Design Certification</h4>
+                            <span>FreeCodeCamp | 2023</span>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>JavaScript Algorithms and Data Structures</h4>
+                            <span>Coursera | 2024</span>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>Sở thích cá nhân</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 5px;">Đọc sách công nghệ, đá bóng, nghe nhạc và tìm hiểu về xu hướng thiết kế UI/UX mới.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- I, II & III. DỰ ÁN CÁ NHÂN & BỘ LỌC DỰ ÁN -->
+        <section id="projects">
+            <h2 class="section-title">Dự Án Cá Nhân</h2>
+
+            <!-- Tính năng JavaScript: Filter Dự án -->
+            <div class="filter-btns">
+                <button class="filter-btn active" data-filter="all">Tất cả</button>
+                <button class="filter-btn" data-filter="web">Web App</button>
+                <button class="filter-btn" data-filter="landing">Landing Page</button>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Dự án 1 -->
+                <div class="project-card" data-category="web">
+                    <img src="Dự án 1.png" alt="Dự án khởi nghiệp kinh doanh chè dưỡng nhan." class="project-img">
+                    <div class="project-info">
+                        <h3>Chè dưỡng nhan</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 5px;">Dự án khởi nghiệp kinh doanh chè dưỡng nhan.</p>
+                        <div class="project-tags">
+                            <span class="tag">HTML5</span>
+                            <span class="tag">Flexbox</span>
+                            <span class="error-msg" id="messageError">Vui lòng nhập nội dung tin nhắn.</span>
+                           </div>
+                        <div class="project-links">
+                            <a href="#" target="_blank"><i class="fa-solid fa-external-link"></i> Xem Demo</a>
+                            <a href="#" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="web">
+                    <img src="Dự án 2.png" alt="Nến thơm Hoa Lâm." class="project-img">
+                    <div class="project-info">
+                        <h3>Nến thơm Hoa Lâm</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 5px;">Dự án khởi nghiệp kinh doanh chè dưỡng nhan.</p>
+                        <div class="project-tags">
+                            <span class="tag">HTML5</span>
+                            <span class="tag">Flexbox</span>
+                            <span class="error-msg" id="messageError">Vui lòng nhập nội dung tin nhắn.</span>
+                           </div>
+                        <div class="project-links">
+                            <a href="#" target="_blank"><i class="fa-solid fa-external-link"></i> Xem Demo</a>
+                            <a href="#" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Nguyễn Văn A. Tất cả các quyền được bảo lưu.</p>
+    </footer>
+
+    <!-- III. NÚT SCROLL TO TOP -->
+    <button class="scroll-top" id="scrollTopBtn" title="Lên đầu trang">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- File JavaScript Tách Riêng -->
+    <script src="bài thiết kế wed.js"></script>
+</body>
+</html>

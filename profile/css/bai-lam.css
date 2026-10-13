@@ -1,0 +1,98 @@
+/* Thanh cuộn phong cách Băng Tuyết */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #060b19;
+}
+::-webkit-scrollbar-thumb {
+    background: #1e3a5f;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #38bdf8;
+}
+
+/* Khung kính mờ Glassmorphism */
+.glass-panel {
+    background: rgba(15, 28, 54, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(186, 230, 253, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 180, 216, 0.15);
+}
+
+.glass-panel-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glass-panel-hover:hover {
+    background: rgba(20, 38, 72, 0.75);
+    border-color: rgba(125, 211, 252, 0.45);
+    box-shadow: 0 12px 40px 0 rgba(56, 189, 248, 0.25);
+    transform: translateY(-3px);
+}
+
+.glass-badge {
+    background: rgba(56, 189, 248, 0.12);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(125, 211, 252, 0.3);
+}
+
+/* Vòng xoay pha lê phát sáng quanh Avatar */
+.crystal-ring {
+    position: relative;
+}
+.crystal-ring::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, #38bdf8, #e0f2fe, #0284c7, #ffffff, #38bdf8);
+    animation: spinRing 10s linear infinite;
+    z-index: 0;
+    opacity: 0.9;
+    filter: drop-shadow(0 0 14px rgba(56, 189, 248, 0.7));
+}
+@keyframes spinRing {
+    100% { transform: rotate(360deg); }
+}
+
+/* Chế độ In ấn (Print Mode) */
+@media print {
+    #snowCanvas, .no-print {
+        display: none !important;
+    }
+    body {
+        background: #060b19 !important;
+        color: #e0f2fe !important;
+    }
+    .glass-panel {
+        backdrop-filter: none !important;
+        background: rgba(15, 28, 54, 0.95) !important;
+        border: 1px solid rgba(186, 230, 253, 0.3) !important;
+    }
+}
+/* Glassmorphism Thích Ứng Sáng & Tối */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+}
+
+.dark .glass-panel {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.glass-badge {
+    background: rgba(14, 165, 233, 0.12);
+    border: 1px solid rgba(14, 165, 233, 0.3);
+}
+
+.dark .glass-badge {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}

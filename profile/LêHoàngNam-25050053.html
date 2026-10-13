@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="vi" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hồ Sơ Cá Nhân - Lê Hoàng Nam | Băng Tuyết Portfolio</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- File CSS riêng -->
+    <link rel="stylesheet" href="css/bai-lam.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    },
+                    colors: {
+                        ice: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        night: {
+                            800: '#0b132b',
+                            900: '#060b19',
+                            950: '#030712',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-100 text-slate-800 dark:bg-night-900 dark:text-ice-100 min-h-screen relative font-sans antialiased selection:bg-ice-500 selection:text-white pb-16 transition-colors duration-300">
+
+    <!-- Canvas Tuyết Rơi -->
+    <canvas id="snowCanvas" class="fixed inset-0 pointer-events-none z-0 opacity-40 dark:opacity-100"></canvas>
+
+    <!-- Quầng Sáng Băng Tuyết -->
+    <div class="fixed top-0 left-1/4 w-96 h-96 bg-ice-500/10 rounded-full blur-[130px] pointer-events-none z-0"></div>
+    <div class="fixed bottom-0 right-1/4 w-[35rem] h-[35rem] bg-indigo-500/10 rounded-full blur-[160px] pointer-events-none z-0"></div>
+
+    <!-- HEADER & THANH ĐIỀU HƯỚNG (NAVBAR FULL MỤC) -->
+    <header class="sticky top-4 z-50 w-full max-w-7xl mx-auto px-4 md:px-8 mb-8 no-print">
+        <div class="glass-panel rounded-2xl p-3 px-6 flex items-center justify-between gap-4 shadow-xl">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3 group shrink-0">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-ice-500 to-cyan-300 flex items-center justify-center text-night-900 font-black shadow-lg shadow-ice-500/30 group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-snowflake text-lg animate-spin" style="animation-duration: 12s;"></i>
+                </div>
+                <div>
+                    <h1 class="font-extrabold text-sm md:text-base tracking-wider text-slate-900 dark:text-white uppercase">Ice Profile</h1>
+                    <p class="text-[10px] md:text-xs text-sky-600 dark:text-ice-300/80 font-medium">Lê Hoàng Nam</p>
+                </div>
+            </a>
+
+            <!-- Menu Điều Hướng Desktop -->
+            <nav class="hidden lg:flex items-center gap-6 xl:gap-7 text-xs xl:text-sm font-semibold text-slate-700 dark:text-ice-200">
+                <a href="#gioi-thieu" class="hover:text-ice-600 dark:hover:text-cyan-300 transition-colors py-1">Giới Thiệu</a>
+                <a href="#muc-tieu" class="hover:text-ice-600 dark:hover:text-cyan-300 transition-colors py-1">Mục Tiêu</a>
+                <a href="#hoc-van" class="hover:text-ice-600 dark:hover:text-cyan-300 transition-colors py-1">Học Vấn</a>
+                <a href="#diem-manh" class="hover:text-ice-600 dark:hover:text-cyan-300 transition-colors py-1">Điểm Mạnh/Yếu</a>
+                <a href="#ky-nang" class="hover:text-ice-600 dark:hover:text-cyan-300 transition-colors py-1">Kỹ Năng</a>
+                <a href="#du-an" class="hover:text-ice-600 dark:hover:text-cyan-300 transition-colors py-1">Dự Án</a>
+                <a href="#lien-he" class="hover:text-ice-600 dark:hover:text-cyan-300 transition-colors py-1">Liên Hệ</a>
+            </nav>
+
+            <!-- Tiện ích & Nút Mobile Menu -->
+            <div class="flex items-center gap-2 sm:gap-3 text-xs shrink-0">
+                <!-- Nút Đổi Sáng/Tối -->
+                <button id="toggleThemeBtn" onclick="toggleTheme()" class="px-3.5 py-2 rounded-xl bg-slate-200/80 hover:bg-slate-300/80 dark:bg-white/5 dark:hover:bg-white/10 text-slate-800 dark:text-ice-200 border border-slate-300/60 dark:border-white/10 transition-all flex items-center gap-2 font-medium" title="Đổi giao diện Sáng/Tối">
+                    <i id="themeIcon" class="fa-solid fa-moon text-amber-500 dark:text-amber-300"></i>
+                    <span id="themeText" class="hidden sm:inline">Tối</span>
+                </button>
+
+                <!-- Nút Tuyết -->
+                <button id="toggleSnowBtn" onclick="toggleSnowEffect()" class="px-3.5 py-2 rounded-xl bg-slate-200/80 hover:bg-slate-300/80 dark:bg-white/5 dark:hover:bg-white/10 text-slate-800 dark:text-ice-200 border border-slate-300/60 dark:border-white/10 transition-all flex items-center gap-2 font-medium" title="Bật/Tắt hiệu ứng tuyết">
+                    <i id="snowIcon" class="fa-solid fa-snowflake text-ice-600 dark:text-cyan-300"></i>
+                    <span class="hidden sm:inline">Tuyết</span>
+                </button>
+
+                <!-- Nút In PDF -->
+                <button onclick="window.print()" class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-ice-500 to-cyan-400 hover:from-ice-600 hover:to-cyan-500 text-night-900 font-bold shadow-md shadow-ice-500/20 transition-all flex items-center gap-1.5">
+                    <i class="fa-solid fa-file-pdf"></i>
+                    <span class="hidden sm:inline">In PDF</span>
+                </button>
+
+                <!-- Toggle Mobile Nav -->
+                <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="lg:hidden p-2.5 rounded-xl bg-slate-200/80 dark:bg-white/5 border border-slate-300/60 dark:border-white/10 text-slate-800 dark:text-ice-200 hover:text-black dark:hover:text-white">
+                    <i class="fa-solid fa-bars text-base"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menu Mobile xổ xuống -->
+        <div id="mobileMenu" class="hidden lg:hidden mt-2 glass-panel rounded-xl p-4 space-y-2 text-sm text-slate-800 dark:text-ice-100 animate-fadeIn">
+            <a href="#gioi-thieu" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg hover:bg-slate-200/60 dark:hover:bg-white/10">1. Giới Thiệu</a>
+            <a href="#muc-tieu" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg hover:bg-slate-200/60 dark:hover:bg-white/10">2. Mục Tiêu Nghề Nghiệp</a>
+            <a href="#hoc-van" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg hover:bg-slate-200/60 dark:hover:bg-white/10">3. Học Vấn & CLB</a>
+            <a href="#diem-manh" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg hover:bg-slate-200/60 dark:hover:bg-white/10">4. Điểm Mạnh & Điểm Yếu</a>
+            <a href="#ky-nang" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg hover:bg-slate-200/60 dark:hover:bg-white/10">5. Kỹ Năng & Chứng Chỉ</a>
+            <a href="#du-an" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg hover:bg-slate-200/60 dark:hover:bg-white/10">6. Dự Án Cá Nhân</a>
+            <a href="#lien-he" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg hover:bg-slate-200/60 dark:hover:bg-white/10">7. Liên Hệ</a>
+        </div>
+    </header>
+
+    <main class="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8 space-y-16 md:space-y-24">
+
+        <!-- SECTION 1: GIỚI THIỆU BẢN THÂN -->
+        <section id="gioi-thieu" class="glass-panel rounded-3xl p-6 md:p-12 relative overflow-hidden scroll-mt-28 min-h-[80vh] flex flex-col justify-center">
+            <div class="absolute -right-12 -top-12 text-slate-300/20 dark:text-ice-300/5 pointer-events-none text-9xl">
+                <i class="fa-solid fa-snowflake"></i>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center gap-10 text-center md:text-left relative z-10">
+                <div class="relative shrink-0">
+                    <div class="crystal-ring w-40 h-40 md:w-52 md:h-52 rounded-full p-1.5 flex items-center justify-center bg-slate-200 dark:bg-night-900 relative">
+                        <div class="w-full h-full rounded-full overflow-hidden relative bg-white dark:bg-night-800 border-2 border-slate-300 dark:border-ice-200/40 flex items-center justify-center shadow-inner">
+                            <img src="image/nawlee.jpg" alt="Avatar Cá Nhân Lê Hoàng Nam" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80'">
+                        </div>
+                    </div>
+                    <div class="absolute bottom-0 right-1 bg-ice-500 text-night-900 p-2.5 rounded-full w-9 h-9 flex items-center justify-center shadow-lg border border-white/40" title="Tài khoản đã xác minh">
+                        <i class="fa-solid fa-certificate text-xs"></i>
+                    </div>
+                </div>
+
+                <div class="flex-1 space-y-4">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full glass-badge text-ice-600 dark:text-ice-300 text-xs font-semibold uppercase tracking-widest">
+                        <i class="fa-regular fa-snowflake text-xs"></i> Hồ Sơ Cá Nhân
+                    </div>
+                    
+                    <h1 class="text-3xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-ice-600 to-indigo-600 dark:from-white dark:via-ice-100 dark:to-ice-300 tracking-tight">
+                        Lê Hoàng Nam
+                    </h1>
+
+                    <p class="text-lg md:text-xl text-ice-600 dark:text-ice-300 font-semibold">
+                        Sinh viên Khóa 28 • Lớp 28TH01 Viện Trí tuệ Nhân tạo & Chuyển đổi số
+                    </p>
+
+                    <p class="text-sm md:text-base text-slate-600 dark:text-ice-200/80 leading-relaxed max-w-3xl">
+                        Tôi là một sinh viên yêu thích công nghệ, luôn đam mê tìm hiểu về Lập trình Web, Trí tuệ Nhân tạo (AI) và Chuyển đổi số. Định hướng phát triển thành một Lập trình viên chuyên nghiệp với tư duy logic tốt và tinh thần cẩn thận, trách nhiệm cao.
+                    </p>
+
+                    <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-3 text-xs md:text-sm text-slate-700 dark:text-ice-200/80">
+                        <span class="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/70 dark:bg-white/5 border border-slate-200 dark:border-white/10 shadow-sm">
+                            <i class="fa-solid fa-envelope text-ice-500"></i>
+                            <span>namhoang11237@gmail.com</span>
+                        </span>
+
+                        <span class="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/70 dark:bg-white/5 border border-slate-200 dark:border-white/10 shadow-sm">
+                            <i class="fa-solid fa-location-dot text-ice-500"></i>
+                            <span>Tp. Hồ Chí Minh, Việt Nam</span>
+                        </span>
+
+                        <span class="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/70 dark:bg-white/5 border border-slate-200 dark:border-white/10 shadow-sm">
+                            <i class="fa-solid fa-graduation-cap text-ice-500"></i>
+                            <span>Đại học Bình Dương</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHÂM NGÔN SỐNG -->
+        <section class="glass-panel rounded-2xl p-8 md:p-10 text-center relative">
+            <div class="max-w-4xl mx-auto space-y-4">
+                <i class="fa-solid fa-quote-left text-4xl text-ice-500/30 dark:text-ice-400/40"></i>
+                <blockquote class="text-xl md:text-3xl font-serif italic text-slate-800 dark:text-ice-100 leading-relaxed">
+                    "Người học mà không suy nghĩ thì lạc lối, người suy nghĩ mà không học thì gặp nguy hiểm"
+                </blockquote>
+                <div class="text-xs md:text-sm font-bold tracking-wider text-ice-600 dark:text-ice-400 uppercase pt-2">
+                    — Khổng Tử
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: MỤC TIÊU NGHỀ NGHIỆP -->
+        <section id="muc-tieu" class="glass-panel rounded-2xl p-6 md:p-10 space-y-8 scroll-mt-28 min-h-[70vh] flex flex-col justify-center">
+            <div class="border-b border-slate-200 dark:border-ice-300/10 pb-4">
+                <h2 class="text-2xl md:text-3xl font-bold flex items-center gap-3 text-slate-900 dark:text-ice-200">
+                    <i class="fa-solid fa-bullseye text-ice-500"></i>
+                    <span>Mục Tiêu Nghề Nghiệp</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Ngắn hạn -->
+                <div class="p-6 md:p-8 rounded-2xl bg-white/80 dark:bg-white/5 border border-slate-200/80 dark:border-white/10 space-y-4 shadow-sm">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-ice-500/20 flex items-center justify-center text-ice-600 dark:text-ice-300 shrink-0">
+                            <i class="fa-solid fa-flag text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 dark:text-white text-lg">Mục Tiêu Ngắn Hạn</h3>
+                            <p class="text-xs text-slate-500 dark:text-ice-300/70">Trong 1 - 2 năm tới</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-3 text-sm md:text-base text-slate-700 dark:text-ice-200/90 list-disc list-inside leading-relaxed">
+                        <li>Thành thạo kiến thức thiết kế Web Front-end (HTML, CSS, JavaScript)</li>
+                        <li>Nâng cao trình độ Tiếng Anh giao tiếp đạt chuẩn B2</li>
+                        <li>Tích cực tham gia các dự án thực tế tại trường và câu lạc bộ</li>
+                    </ul>
+                </div>
+
+                <!-- Dài hạn -->
+                <div class="p-6 md:p-8 rounded-2xl bg-white/80 dark:bg-white/5 border border-slate-200/80 dark:border-white/10 space-y-4 shadow-sm">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-cyan-500/20 flex items-center justify-center text-cyan-600 dark:text-cyan-300 shrink-0">
+                            <i class="fa-solid fa-rocket text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 dark:text-white text-lg">Mục Tiêu Dài Hạn</h3>
+                            <p class="text-xs text-slate-500 dark:text-ice-300/70">Tầm nhìn 3 - 5 năm</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-3 text-sm md:text-base text-slate-700 dark:text-ice-200/90 list-disc list-inside leading-relaxed">
+                        <li>Trở thành Lập trình viên Full-Stack chuyên nghiệp mảng AI & Chuyển đổi số</li>
+                        <li>Nghiên cứu ứng dụng các mô hình AI vào tối ưu hóa giải pháp phần mềm doanh nghiệp</li>
+                        <li>Đóng góp tích cực cho cộng đồng lập trình mở và hỗ trợ thế hệ sinh viên tiếp theo</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: HỌC VẤN & HOẠT ĐỘNG CLB -->
+        <section id="hoc-van" class="glass-panel rounded-2xl p-6 md:p-10 space-y-8 scroll-mt-28 min-h-[70vh] flex flex-col justify-center">
+            <div class="border-b border-slate-200 dark:border-ice-300/10 pb-4">
+                <h2 class="text-2xl md:text-3xl font-bold flex items-center gap-3 text-slate-900 dark:text-ice-200">
+                    <i class="fa-solid fa-graduation-cap text-ice-500"></i>
+                    <span>Học Vấn & Hoạt Động</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Học vấn -->
+                <div class="p-6 rounded-2xl bg-white/80 dark:bg-white/5 border border-slate-200/80 dark:border-white/10 space-y-3 shadow-sm">
+                    <div class="flex justify-between items-start gap-2">
+                        <h3 class="font-bold text-lg md:text-xl text-slate-900 dark:text-white">Đại học Bình Dương</h3>
+                        <span class="text-xs px-3 py-1 rounded bg-ice-500/20 text-ice-700 dark:text-ice-300 font-semibold border border-ice-400/30 shrink-0">2025 - Hiện tại</span>
+                    </div>
+                    <p class="text-sm text-ice-600 dark:text-ice-300 font-medium">Khóa 28 • Lớp 28TH01 - Viện Trí tuệ Nhân tạo & Chuyển đổi số</p>
+                    <p class="text-xs md:text-sm text-slate-600 dark:text-ice-200/80 leading-relaxed pt-2">
+                        Chuyên ngành Công nghệ Thông tin, định hướng chuyên sâu về thiết kế giao diện Web, thuật toán và giải pháp Trí tuệ Nhân tạo
+                    </p>
+                </div>
+
+                <!-- CLB 1 -->
+                <div class="p-6 rounded-2xl bg-white/80 dark:bg-white/5 border border-slate-200/80 dark:border-white/10 space-y-3 shadow-sm">
+                    <div class="flex justify-between items-start gap-2">
+                        <h3 class="font-bold text-lg md:text-xl text-slate-900 dark:text-white">CLB TT Hoạt động Cộng đồng & Sức khỏe</h3>
+                        <span class="text-xs px-3 py-1 rounded bg-ice-500/20 text-ice-700 dark:text-ice-300 font-semibold border border-ice-400/30 shrink-0">10/2025 - Hiện tại</span>
+                    </div>
+                    <p class="text-sm text-ice-600 dark:text-ice-300 font-medium">Chức vụ: Thành viên ban Hậu cần & Sự kiện</p>
+                    <p class="text-xs md:text-sm text-slate-600 dark:text-ice-200/80 leading-relaxed pt-2">
+                        Tham gia phối hợp tổ chức các sự kiện cấp Trung tâm, hỗ trợ công tác hậu cần và điều phối hoạt động sinh viên
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: ĐIỂM MẠNH & ĐIỂM YẾU -->
+        <section id="diem-manh" class="glass-panel rounded-2xl p-6 md:p-10 space-y-8 scroll-mt-28 min-h-[70vh] flex flex-col justify-center">
+            <div class="border-b border-slate-200 dark:border-ice-300/10 pb-4">
+                <h2 class="text-2xl md:text-3xl font-bold flex items-center gap-3 text-slate-900 dark:text-ice-200">
+                    <i class="fa-solid fa-scale-balanced text-ice-500"></i>
+                    <span>Điểm Mạnh & Điểm Yếu</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- CỘT ĐIỂM MẠNH -->
+                <div class="space-y-4 p-6 rounded-2xl bg-emerald-500/10 border border-emerald-400/30">
+                    <h3 class="font-bold text-lg text-emerald-700 dark:text-emerald-300 flex items-center gap-2.5">
+                        <i class="fa-solid fa-shield-halved text-emerald-600 dark:text-emerald-400"></i>
+                        <span>Điểm Mạnh</span>
+                    </h3>
+
+                    <ul class="space-y-3 text-sm md:text-base text-slate-700 dark:text-ice-100">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-emerald-600 dark:text-emerald-400 mt-1 shrink-0"></i>
+                            <span>Tư duy logic ổn, khả năng tự học công nghệ mới nhanh chóng</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-emerald-600 dark:text-emerald-400 mt-1 shrink-0"></i>
+                            <span>Cẩn thận, tỉ mỉ trong từng chi tiết sản phẩm</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-check text-emerald-600 dark:text-emerald-400 mt-1 shrink-0"></i>
+                            <span>Kỹ năng làm việc nhóm tốt và có trách nhiệm cao với công việc</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- CỘT ĐIỂM YẾU -->
+                <div class="space-y-4 p-6 rounded-2xl bg-amber-500/10 border border-amber-400/30">
+                    <h3 class="font-bold text-lg text-amber-700 dark:text-amber-300 flex items-center gap-2.5">
+                        <i class="fa-solid fa-triangle-exclamation text-amber-600 dark:text-amber-400"></i>
+                        <span>Điểm Yếu & Khắc Phục</span>
+                    </h3>
+
+                    <ul class="space-y-3 text-sm md:text-base text-slate-700 dark:text-ice-100">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-arrows-rotate text-amber-600 dark:text-amber-400 mt-1 shrink-0"></i>
+                            <span>Đôi khi quá cầu toàn làm tốn thời gian ➔ Đang khắc phục bằng cách ưu tiên tiến độ</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-arrows-rotate text-amber-600 dark:text-amber-400 mt-1 shrink-0"></i>
+                            <span>Ngại nói trước đám đông lớn ➔ Đang tích cực thuyết trình nhiều hơn tại các buổi làm việc nhóm</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: KỸ NĂNG, CHỨNG CHỈ & SỞ THÍCH -->
+        <section id="ky-nang" class="glass-panel rounded-2xl p-6 md:p-10 space-y-8 scroll-mt-28 min-h-[80vh] flex flex-col justify-center">
+            <div class="border-b border-slate-200 dark:border-ice-300/10 pb-4 flex justify-between items-center">
+                <h2 class="text-2xl md:text-3xl font-bold flex items-center gap-3 text-slate-900 dark:text-ice-200">
+                    <i class="fa-solid fa-wand-magic-sparkles text-ice-500"></i>
+                    <span>Kỹ Năng & Sở Thích Cá Nhân</span>
+                </h2>
+                <span class="text-xs text-slate-500 dark:text-ice-300/60 hidden sm:inline">Trau dồi liên tục</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- Kỹ năng hiện có -->
+                <div class="space-y-4">
+                    <h3 class="font-semibold text-xs md:text-sm text-sky-700 dark:text-ice-300 uppercase tracking-wider flex items-center gap-2">
+                        <i class="fa-solid fa-check-double text-cyan-500"></i>
+                        <span>Kỹ năng thành thạo</span>
+                    </h3>
+
+                    <div class="flex flex-wrap gap-2.5">
+                        <span class="px-3.5 py-2 rounded-xl bg-white/80 dark:bg-ice-500/15 border border-slate-200 dark:border-ice-400/30 text-xs md:text-sm font-semibold text-slate-800 dark:text-ice-100 flex items-center gap-2 shadow-sm">
+                            <i class="fa-solid fa-brain text-cyan-500 text-base"></i> Tư duy Logic & Thuyết trình
+                        </span>
+                        <span class="px-3.5 py-2 rounded-xl bg-white/80 dark:bg-ice-500/15 border border-slate-200 dark:border-ice-400/30 text-xs md:text-sm font-semibold text-slate-800 dark:text-ice-100 flex items-center gap-2 shadow-sm">
+                            <i class="fa-solid fa-language text-emerald-500 text-base"></i> Tiếng Anh cơ bản
+                        </span>
+                        <span class="px-3.5 py-2 rounded-xl bg-white/80 dark:bg-ice-500/15 border border-slate-200 dark:border-ice-400/30 text-xs md:text-sm font-semibold text-slate-800 dark:text-ice-100 flex items-center gap-2 shadow-sm">
+                            <i class="fa-solid fa-pen-nib text-pink-500 text-base"></i> Viết bài & Nội dung
+                        </span>
+                        <span class="px-3.5 py-2 rounded-xl bg-white/80 dark:bg-ice-500/15 border border-slate-200 dark:border-ice-400/30 text-xs md:text-sm font-semibold text-slate-800 dark:text-ice-100 flex items-center gap-2 shadow-sm">
+                            <i class="fa-solid fa-gears text-red-500 text-base"></i> Giải quyết vấn đề
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Kỹ năng đang phát triển -->
+                <div class="space-y-4">
+                    <h3 class="font-semibold text-xs md:text-sm text-indigo-600 dark:text-indigo-300 uppercase tracking-wider flex items-center gap-2">
+                        <i class="fa-solid fa-spinner text-indigo-500 animate-spin" style="animation-duration: 10s;"></i>
+                        <span>Kỹ năng đang trau dồi</span>
+                    </h3>
+
+                    <div class="flex flex-wrap gap-2.5">
+                        <span class="px-3.5 py-2 rounded-xl bg-white/80 dark:bg-indigo-500/15 border border-slate-200 dark:border-indigo-400/30 text-xs md:text-sm font-semibold text-slate-800 dark:text-indigo-100 flex items-center gap-2 shadow-sm">
+                            <i class="fa-brands fa-python text-amber-500 text-base"></i> Python & AI Prompting
+                        </span>
+                        <span class="px-3.5 py-2 rounded-xl bg-white/80 dark:bg-indigo-500/15 border border-slate-200 dark:border-indigo-400/30 text-xs md:text-sm font-semibold text-slate-800 dark:text-indigo-100 flex items-center gap-2 shadow-sm">
+                            <i class="fa-brands fa-js text-amber-500 text-base"></i> JavaScript 
+                        </span>
+                        <span class="px-3.5 py-2 rounded-xl bg-white/80 dark:bg-indigo-500/15 border border-slate-200 dark:border-indigo-400/30 text-xs md:text-sm font-semibold text-slate-800 dark:text-indigo-100 flex items-center gap-2 shadow-sm">
+                            <i class="fa-solid fa-database text-purple-500 text-base"></i> SQL 
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sở thích cá nhân -->
+            <div class="pt-6 border-t border-slate-200 dark:border-ice-300/10 space-y-4">
+                <h3 class="font-semibold text-xs md:text-sm text-sky-700 dark:text-ice-300 uppercase tracking-wider flex items-center gap-2">
+                    <i class="fa-solid fa-compass text-ice-500"></i>
+                    <span>Sở thích ngoài giờ học</span>
+                </h3>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs md:text-sm">
+                    <div class="p-3 rounded-xl bg-white/80 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center gap-2.5 shadow-sm">
+                        <i class="fa-solid fa-gamepad text-ice-500"></i>
+                        <span>Game FPS / Hardcore</span>
+                    </div>
+                    <div class="p-3 rounded-xl bg-white/80 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center gap-2.5 shadow-sm">
+                        <i class="fa-solid fa-music text-ice-500"></i>
+                        <span>Nhạc Chill & Lo-Fi</span>
+                    </div>
+                    <div class="p-3 rounded-xl bg-white/80 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center gap-2.5 shadow-sm">
+                        <i class="fa-solid fa-book-open text-ice-500"></i>
+                        <span>Đọc Light Novel</span>
+                    </div>
+                    <div class="p-3 rounded-xl bg-white/80 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center gap-2.5 shadow-sm">
+                        <i class="fa-solid fa-mountain text-ice-500"></i>
+                        <span>Đánh cầu lông</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CHỨNG CHỈ & GIẢI THƯỜNG -->
+            <div class="pt-6 border-t border-slate-200 dark:border-ice-300/10 space-y-4">
+                <h3 class="font-semibold text-xs md:text-sm text-sky-700 dark:text-ice-300 uppercase tracking-wider flex items-center gap-2">
+                    <i class="fa-solid fa-award text-amber-500"></i>
+                    <span>Chứng chỉ & Giải thưởng</span>
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs md:text-sm">
+                    <div class="p-4 rounded-xl bg-white/80 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center gap-4 shadow-sm">
+                        <i class="fa-solid fa-certificate text-amber-500 text-2xl"></i>
+                        <div>
+                            <p class="font-bold text-slate-900 dark:text-white">Hoàn thành môn Kiến trúc máy tính</p>
+                            <p class="text-slate-500 dark:text-ice-300/70">Trường Đại học Bình Dương • 2025</p>
+                        </div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-white/80 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center gap-4 shadow-sm">
+                        <i class="fa-solid fa-hourglass-half text-cyan-500 text-2xl"></i>
+                        <div>
+                            <p class="font-bold text-slate-900 dark:text-white">Giải Tư Huyện môn Giáo dục công dân Lớp 9</p>
+                            <p class="text-slate-500 dark:text-ice-300/70">Đã nhận giấy khen vào cuối năm Lớp 9</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: DỰ ÁN CÁ NHÂN -->
+        <section id="du-an" class="glass-panel rounded-2xl p-6 md:p-10 space-y-8 scroll-mt-28 min-h-[80vh] flex flex-col justify-center">
+            <div class="border-b border-slate-200 dark:border-ice-300/10 pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold flex items-center gap-3 text-slate-900 dark:text-ice-200">
+                        <i class="fa-solid fa-laptop-code text-ice-500"></i>
+                        <span>Dự Án Cá Nhân</span>
+                    </h2>
+                    <p class="text-xs md:text-sm text-slate-500 dark:text-ice-300/70">Các sản phẩm tiêu biểu đã thực hiện</p>
+                </div>
+
+                <!-- Bộ lọc dự án -->
+                <div class="flex items-center gap-2 text-xs md:text-sm">
+                    <button onclick="filterProjects('all')" class="project-filter-btn active px-4 py-1.5 rounded-lg bg-ice-500 text-white dark:text-night-900 font-bold transition-all">Tất cả</button>
+                    <button onclick="filterProjects('web')" class="project-filter-btn px-4 py-1.5 rounded-lg bg-white/80 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 text-slate-800 dark:text-ice-200 border border-slate-300/60 dark:border-white/10 transition-all">Web Design</button>
+                    <button onclick="filterProjects('ai')" class="project-filter-btn px-4 py-1.5 rounded-lg bg-white/80 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 text-slate-800 dark:text-ice-200 border border-slate-300/60 dark:border-white/10 transition-all">AI / App</button>
+                </div>
+            </div>
+
+            <!-- Danh sách Dự án -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <!-- Dự án 1 -->
+                <article class="project-card web p-6 rounded-2xl bg-white/80 dark:bg-white/5 border border-slate-200/80 dark:border-white/10 hover:border-ice-400 transition-all flex flex-col justify-between space-y-5 group shadow-sm">
+                    <div class="space-y-4">
+                        <div class="h-48 rounded-xl bg-gradient-to-br from-sky-100 to-indigo-100 dark:from-ice-900 dark:to-night-800 border border-slate-200 dark:border-white/10 overflow-hidden relative flex items-center justify-center group-hover:border-ice-400 transition-colors">
+                            <i class="fa-solid fa-snowflake text-7xl text-ice-500/40 dark:text-ice-400/30 group-hover:scale-110 transition-transform duration-500"></i>
+                            <span class="absolute top-3 right-3 text-xs px-3 py-1 rounded-full glass-badge text-ice-700 dark:text-ice-300 font-bold">Frontend</span>
+                        </div>
+
+                        <h3 class="font-bold text-xl text-slate-900 dark:text-white group-hover:text-ice-600 dark:group-hover:text-cyan-300 transition-colors">Website Hồ Sơ Cá Nhân Chủ đề: Băng Tuyết</h3>
+                        <p class="text-xs md:text-sm text-slate-600 dark:text-ice-200/80 leading-relaxed">
+                            Website Portfolio giới thiệu bản thân thiết kế theo chủ đề Băng Tuyết (Ice Theme) với hiệu ứng tuyết rơi Canvas động, Glassmorphism UI, Responsive đầy đủ và kiểm tra dữ liệu form liên hệ bằng JS.
+                        </p>
+
+                        <div class="flex flex-wrap gap-2 pt-1">
+                            <span class="text-xs px-2.5 py-1 rounded bg-sky-100 dark:bg-cyan-500/10 text-sky-800 dark:text-cyan-300 border border-sky-300 dark:border-cyan-400/20">HTML5</span>
+                            <span class="text-xs px-2.5 py-1 rounded bg-sky-100 dark:bg-cyan-500/10 text-sky-800 dark:text-cyan-300 border border-sky-300 dark:border-cyan-400/20">Tailwind CSS</span>
+                            <span class="text-xs px-2.5 py-1 rounded bg-sky-100 dark:bg-cyan-500/10 text-sky-800 dark:text-cyan-300 border border-sky-300 dark:border-cyan-400/20">JavaScript</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-2 flex items-center justify-between text-xs md:text-sm">
+                        <button onclick="openModal('Dự Án 1: Ice Portfolio', 'Website Portfolio giao diện Băng Tuyết độc đáo tích hợp hiệu ứng Canvas tuyết rơi động, chế độ in PDF tối ưu, và các thành phần Glassmorphism mượt mà.')" class="text-ice-600 dark:text-ice-300 hover:text-black dark:hover:text-white font-semibold flex items-center gap-1.5">
+                            <i class="fa-solid fa-circle-info"></i> Xem chi tiết
+                        </button>
+                        <a href="#" class="px-4 py-2 rounded-lg bg-ice-500/20 hover:bg-ice-500/30 text-ice-700 dark:text-ice-200 border border-ice-400/30 font-bold transition-all flex items-center gap-2">
+                            <span>Demo</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Dự án 2 -->
+                <article class="project-card web p-6 rounded-2xl bg-white/80 dark:bg-white/5 border border-slate-200/80 dark:border-white/10 hover:border-ice-400 transition-all flex flex-col justify-between space-y-5 group shadow-sm">
+                    <div class="space-y-4">
+                        <div class="h-48 rounded-xl bg-gradient-to-br from-indigo-100 to-sky-100 dark:from-indigo-950 dark:to-night-800 border border-slate-200 dark:border-white/10 overflow-hidden relative flex items-center justify-center group-hover:border-indigo-400 transition-colors">
+                            <i class="fa-solid fa-briefcase text-7xl text-indigo-500/40 dark:text-indigo-400/30 group-hover:scale-110 transition-transform duration-500"></i>
+                            <span class="absolute top-3 right-3 text-xs px-3 py-1 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-700 dark:text-indigo-300 font-bold">Web App</span>
+                        </div>
+
+                        <h3 class="font-bold text-xl text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-300 transition-colors">Website Tìm Việc Làm Cho Sinh Viên</h3>
+                        <p class="text-xs md:text-sm text-slate-600 dark:text-ice-200/80 leading-relaxed">
+                            Nền tảng kết nối sinh viên với nhà tuyển dụng, hỗ trợ tìm việc bán thời gian và thực tập phù hợp lịch học, tạo CV online và ứng tuyển trực tiếp.
+                        </p>
+
+                        <div class="flex flex-wrap gap-2 pt-1">
+                            <span class="text-xs px-2.5 py-1 rounded bg-indigo-100 dark:bg-indigo-500/10 text-indigo-800 dark:text-indigo-300 border border-indigo-300 dark:border-indigo-400/20">HTML/CSS</span>
+                            <span class="text-xs px-2.5 py-1 rounded bg-indigo-100 dark:bg-indigo-500/10 text-indigo-800 dark:text-indigo-300 border border-indigo-300 dark:border-indigo-400/20">JavaScript</span>
+                            <span class="text-xs px-2.5 py-1 rounded bg-indigo-100 dark:bg-indigo-500/10 text-indigo-800 dark:text-indigo-300 border border-indigo-300 dark:border-indigo-400/20">Node.js / SQL</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-2 flex items-center justify-between text-xs md:text-sm">
+                        <button onclick="openModal('Dự Án 2: Web Tìm Việc Làm Sinh Viên', 'Nền tảng hỗ trợ sinh viên tạo CV chuyên nghiệp, lọc công việc theo ca làm/việc bán thời gian/thực tập, và quản lý hồ sơ ứng tuyển trực tuyến.')" class="text-indigo-600 dark:text-indigo-300 hover:text-black dark:hover:text-white font-semibold flex items-center gap-1.5">
+                            <i class="fa-solid fa-circle-info"></i> Xem chi tiết
+                        </button>
+                        <span class="px-3.5 py-2 rounded-lg bg-amber-500/20 text-amber-800 dark:text-amber-200 border border-amber-400/40 font-semibold flex items-center gap-2 text-xs md:text-sm">
+                            <i class="fa-solid fa-flask-vial text-amber-600 dark:text-amber-300 text-xs"></i>
+                            <span>Đang quá trình thử nghiệm</span>
+                        </span>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- SECTION 7: THÔNG TIN LIÊN HỆ & FORM LIÊN HỆ -->
+        <section id="lien-he" class="glass-panel rounded-2xl p-6 md:p-10 space-y-8 min-h-[75vh] flex flex-col justify-center scroll-mt-28">
+            <div class="border-b border-slate-200 dark:border-ice-300/10 pb-4 flex items-center justify-between">
+                <h2 class="text-2xl md:text-3xl font-bold flex items-center gap-3 text-slate-900 dark:text-ice-200">
+                    <i class="fa-solid fa-address-book text-ice-500"></i>
+                    <span>Thông Tin & Form Liên Hệ</span>
+                </h2>
+                <span class="text-xs text-slate-500 dark:text-ice-300/60 italic hidden sm:inline">Phản hồi nhanh chóng</span>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                
+                <!-- Thẻ Mạng Xã Hội -->
+                <div class="space-y-4">
+                    <!-- Facebook -->
+                    <div class="p-6 rounded-2xl bg-gradient-to-br from-blue-500/10 to-indigo-500/5 border border-blue-400/30 space-y-4 hover:border-blue-400 transition-all">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-blue-600/30 border border-blue-400/40 flex items-center justify-center text-blue-600 dark:text-blue-300 text-2xl shadow-lg shrink-0">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-900 dark:text-white text-base md:text-lg">Facebook</h3>
+                                <p class="text-xs md:text-sm text-slate-600 dark:text-ice-200/90 font-semibold">Hoàng Nam (Tình)</p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <a href="https://facebook.com/Tinhlamih" target="_blank" rel="noopener noreferrer" 
+                               class="w-full py-3 rounded-xl bg-blue-500/20 hover:bg-blue-500/30 text-blue-700 dark:text-blue-200 border border-blue-400/30 text-xs md:text-sm font-bold transition-all flex items-center justify-center gap-2">
+                                <span>Kết Nối Trên Facebook</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Zalo -->
+                    <div class="p-6 rounded-2xl bg-gradient-to-br from-cyan-500/10 to-blue-500/5 border border-cyan-400/30 space-y-4 hover:border-cyan-400 transition-all">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-cyan-600/30 border border-cyan-400/40 flex items-center justify-center text-cyan-600 dark:text-cyan-300 text-2xl shadow-lg shrink-0">
+                                <i class="fa-solid fa-comment-dots"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-900 dark:text-white text-base md:text-lg">Zalo</h3>
+                                <p class="text-xs md:text-sm text-slate-600 dark:text-ice-200/90 font-semibold">SĐT Zalo: 0968.822.618</p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <a href="https://zalo.me/0968822618" target="_blank" rel="noopener noreferrer" 
+                               class="w-full py-3 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-700 dark:text-cyan-200 border border-cyan-400/30 text-xs md:text-sm font-bold transition-all flex items-center justify-center gap-2">
+                                <span>Nhắn Tin Qua Zalo</span>
+                                <i class="fa-solid fa-paper-plane text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Liên Hệ -->
+                <div class="p-6 rounded-2xl bg-white/80 dark:bg-white/5 border border-slate-200/80 dark:border-white/10 space-y-4 shadow-sm">
+                    <h3 class="font-bold text-slate-900 dark:text-white text-lg flex items-center gap-2.5">
+                        <i class="fa-solid fa-paper-plane text-ice-500"></i>
+                        <span>Gửi Lời Nhắn Trực Tiếp</span>
+                    </h3>
+
+                    <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-4 text-xs md:text-sm">
+                        <div>
+                            <label class="block text-slate-700 dark:text-ice-200 font-semibold mb-1">Họ và Tên <span class="text-red-500">*</span></label>
+                            <input type="text" id="contactName" placeholder="Nhập họ và tên của bạn..." class="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-night-900/80 border border-slate-300 dark:border-white/15 text-slate-900 dark:text-white focus:outline-none focus:border-ice-500 transition-colors">
+                        </div>
+
+                        <div>
+                            <label class="block text-slate-700 dark:text-ice-200 font-semibold mb-1">Email <span class="text-red-500">*</span></label>
+                            <input type="email" id="contactEmail" placeholder="example@domain.com" class="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-night-900/80 border border-slate-300 dark:border-white/15 text-slate-900 dark:text-white focus:outline-none focus:border-ice-500 transition-colors">
+                        </div>
+
+                        <div>
+                            <label class="block text-slate-700 dark:text-ice-200 font-semibold mb-1">Nội Dung Lời Nhắn <span class="text-red-500">*</span></label>
+                            <textarea id="contactMessage" rows="3" placeholder="Nhập nội dung tin nhắn..." class="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-night-900/80 border border-slate-300 dark:border-white/15 text-slate-900 dark:text-white focus:outline-none focus:border-ice-500 transition-colors"></textarea>
+                        </div>
+
+                        <div id="formStatus" class="hidden p-3 rounded-lg text-xs font-medium"></div>
+
+                        <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-ice-500 to-cyan-400 hover:from-ice-600 hover:to-cyan-500 text-night-900 font-bold transition-all shadow-md shadow-ice-500/20 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span>Gửi Tin Nhắn</span>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Nút Scroll to top -->
+    <button id="scrollTopBtn" onclick="scrollToTop()" class="fixed bottom-6 right-6 hidden z-50 w-12 h-12 rounded-2xl bg-ice-500 text-night-900 font-bold shadow-xl hover:scale-110 transition-all flex items-center justify-center">
+        <i class="fa-solid fa-arrow-up text-lg"></i>
+    </button>
+
+    <!-- MODAL POPUP -->
+    <div id="projectModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
+        <div class="glass-panel max-w-xl w-full rounded-2xl p-6 md:p-8 space-y-4 relative animate-fadeIn">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-500 dark:text-ice-300 hover:text-black dark:hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 id="modalTitle" class="font-bold text-xl md:text-2xl text-slate-900 dark:text-white">Tên Dự Án</h3>
+            <p id="modalDescription" class="text-xs md:text-sm text-slate-600 dark:text-ice-200/90 leading-relaxed">Mô tả dự án...</p>
+            <div class="pt-4 flex justify-end">
+                <button onclick="closeModal()" class="px-5 py-2 rounded-xl bg-slate-200 dark:bg-white/10 hover:bg-slate-300 dark:hover:bg-white/20 text-slate-800 dark:text-white text-xs md:text-sm font-bold transition-all">Đóng</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="mt-16 text-center text-xs md:text-sm text-slate-500 dark:text-ice-300/50 no-print">
+        <p>© <span id="year">2026</span> Lê Hoàng Nam • Môn: Thiết kế Web • Viện Trí tuệ Nhân tạo & Chuyển đổi số</p>
+    </footer>
+
+    <!-- FILE JAVASCRIPT RIÊNG -->
+    <script src="java/script.js"></script>
+</body>
+</html>
