@@ -1,92 +1,53 @@
-/* Thanh cuộn phong cách Băng Tuyết */
+/* ==========================================
+   1. THANH CUỘN TRANG (CUSTOM SCROLLBAR)
+   ========================================== */
 ::-webkit-scrollbar {
     width: 8px;
 }
+
 ::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+.dark ::-webkit-scrollbar-track {
     background: #060b19;
 }
+
 ::-webkit-scrollbar-thumb {
-    background: #1e3a5f;
+    background: #0ea5e9;
     border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-    background: #38bdf8;
+    background: #0284c7;
 }
 
-/* Khung kính mờ Glassmorphism */
-.glass-panel {
-    background: rgba(15, 28, 54, 0.65);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(186, 230, 253, 0.2);
-    box-shadow: 0 8px 32px 0 rgba(0, 180, 216, 0.15);
-}
-
-.glass-panel-hover {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.glass-panel-hover:hover {
-    background: rgba(20, 38, 72, 0.75);
-    border-color: rgba(125, 211, 252, 0.45);
-    box-shadow: 0 12px 40px 0 rgba(56, 189, 248, 0.25);
-    transform: translateY(-3px);
-}
-
-.glass-badge {
-    background: rgba(56, 189, 248, 0.12);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(125, 211, 252, 0.3);
-}
-
-/* Vòng xoay pha lê phát sáng quanh Avatar */
-.crystal-ring {
-    position: relative;
-}
-.crystal-ring::before {
-    content: '';
-    position: absolute;
-    inset: -6px;
-    border-radius: 50%;
-    background: conic-gradient(from 0deg, #38bdf8, #e0f2fe, #0284c7, #ffffff, #38bdf8);
-    animation: spinRing 10s linear infinite;
-    z-index: 0;
-    opacity: 0.9;
-    filter: drop-shadow(0 0 14px rgba(56, 189, 248, 0.7));
-}
-@keyframes spinRing {
-    100% { transform: rotate(360deg); }
-}
-
-/* Chế độ In ấn (Print Mode) */
-@media print {
-    #snowCanvas, .no-print {
-        display: none !important;
-    }
-    body {
-        background: #060b19 !important;
-        color: #e0f2fe !important;
-    }
-    .glass-panel {
-        backdrop-filter: none !important;
-        background: rgba(15, 28, 54, 0.95) !important;
-        border: 1px solid rgba(186, 230, 253, 0.3) !important;
-    }
-}
-/* Glassmorphism Thích Ứng Sáng & Tối */
+/* ==========================================
+   2. KHUNG KÍNH MỜ (GLASSMORPHISM ADAPTIVE)
+   ========================================== */
+/* Nền Sáng (Light Mode) */
 .glass-panel {
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(226, 232, 240, 0.9);
     box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+    transition: background 0.3s ease, border 0.3s ease, box-shadow 0.3s ease, transform 0.15s ease-out;
+    transform-style: preserve-3d;
 }
 
+/* Nền Tối (Dark Mode) */
 .dark .glass-panel {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
 }
 
+.glass-panel-hover:hover {
+    box-shadow: 0 15px 35px -5px rgba(14, 165, 233, 0.2);
+}
+
+/* Huy hiệu Badge Kính Mờ */
 .glass-badge {
     background: rgba(14, 165, 233, 0.12);
     border: 1px solid rgba(14, 165, 233, 0.3);
@@ -95,4 +56,106 @@
 .dark .glass-badge {
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ==========================================
+   3. HIỆU ỨNG VIỀN PHÁT SÁNG ANIME AVATAR
+   ========================================== */
+.crystal-ring {
+    background: linear-gradient(135deg, #0ea5e9, #38bdf8, #818cf8);
+    box-shadow: 0 0 25px rgba(14, 165, 233, 0.4);
+    animation: pulseGlow 4s infinite alternate;
+}
+
+@keyframes pulseGlow {
+    0% {
+        box-shadow: 0 0 15px rgba(14, 165, 233, 0.3);
+    }
+    100% {
+        box-shadow: 0 0 32px rgba(14, 165, 233, 0.65);
+    }
+}
+
+/* ==========================================
+   4. HIỆU ỨNG TƯƠNG TÁC CUỘN TRANG (SCROLL REVEAL)
+   ========================================== */
+.reveal-item {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.reveal-item.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================
+   5. HIỆU ỨNG NGIÊNG 3D & THẺ DỰ ÁN
+   ========================================== */
+.project-card {
+    transform-style: preserve-3d;
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.15s ease-out;
+}
+
+.project-filter-btn.active {
+    background-color: #0ea5e9 !important;
+    color: #ffffff !important;
+}
+
+.dark .project-filter-btn.active {
+    color: #030712 !important;
+}
+
+/* ==========================================
+   6. ANIMATION MODAL & CỬA SỔ BẬT LÊN
+   ========================================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ==========================================
+   7. CẤU HÌNH IN TRANG NGHỆ THUẬT (PDF PRINT)
+   ========================================== */
+@media print {
+    .no-print, 
+    #snowCanvas, 
+    #scrollTopBtn, 
+    #toggleThemeBtn, 
+    #toggleSnowBtn,
+    header,
+    footer {
+        display: none !important;
+    }
+
+    body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        padding-bottom: 0 !important;
+    }
+
+    .glass-panel {
+        background: none !important;
+        border: 1px solid #e2e8f0 !important;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
+        page-break-inside: avoid;
+    }
+
+    .reveal-item {
+        opacity: 1 !important;
+        transform: none !important;
+    }
 }

@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Cá Nhân - Lê Tấn Phát</title>
+
+    <!-- Font Awesome Icons CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- File CSS Tách Riêng -->
+    <link rel="stylesheet" href="bài-giữa-kỳ-thiết-kế-web.css" />
+  </head>
+  <body data-theme="sunny">
+    <!-- CANVAS HIỆU ỨNG THỜI TIẾT (NẮNG / MƯA) -->
+    <canvas id="weatherCanvas"></canvas>
+
+    <!-- HEADER / NAVBAR -->
+    <header>
+      <div class="container">
+        <nav>
+          <div class="logo">DevPortfolio.</div>
+          <ul class="nav-links" id="navLinks">
+            <li><a href="#about">Giới thiệu</a></li>
+            <li><a href="#skills">Kỹ năng</a></li>
+            <li><a href="#experience">Kinh nghiệm</a></li>
+            <li><a href="#projects">Dự án</a></li>
+            <li><a href="#contact">Liên hệ</a></li>
+          </ul>
+          <div class="nav-actions">
+            <!-- NÚT BẤM ĐỔI HIỆU ỨNG NẮNG / MƯA -->
+            <button
+              class="theme-toggle-btn"
+              id="themeToggle"
+              type="button"
+              title="Bấm để đổi Nắng / Mưa"
+            >
+              <i class="fa-solid fa-sun" id="themeIcon"></i>
+            </button>
+            <div class="hamburger" id="hamburger">
+              <i class="fa-solid fa-bars"></i>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- I. GIỚI THIỆU BẢN THÂN (HERO SECTION) -->
+      <section id="about" class="hero">
+        <div class="hero-content glass-card">
+          <div class="hero-text">
+            <h3>Xin chào, tôi là</h3>
+            <h1>Lê Tấn Phát</h1>
+            <p>
+              Sinh viên năm 2 chuyên ngành Công nghệ Thông tin. Đây là bài tập
+              lớn môn Lập trình Web nhằm tổng hợp kiến thức về HTML5, CSS3 và
+              JavaScript thuần đã tích lũy trong học kỳ.
+            </p>
+            <a href="#projects" class="btn">Xem dự án môn học</a>
+          </div>
+          <div class="hero-avatar">
+            <img
+              src="ảnh cá nhân(1).png"
+              alt="Ảnh đại diện Lê Tấn Phát"
+              class="avatar-img"
+              onerror="this.src = 'https://via.placeholder.com/180?text=Avatar'"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- II. TỔNG QUAN & CÔNG NGHỆ ĐANG HỌC -->
+      <section id="skills">
+        <h2 class="section-title">Tổng Quan Bản Thân</h2>
+        <div class="grid-2">
+          <div class="card glass-card">
+            <h3>
+              <i class="fa-solid fa-bullseye"></i> Định hướng & Mục tiêu môn học
+            </h3>
+            <p>
+              <strong>Mục tiêu bài tập:</strong> Vận dụng kiến thức thiết kế
+              giao diện Responsive, tổ chức mã nguồn sạch sẽ và xử lý tương tác
+              DOM bằng JavaScript.
+            </p>
+            <p style="margin-top: 10px">
+              <strong>Định hướng bản thân:</strong> Nắm vững nền tảng Lập trình
+              Web cơ bản, rèn luyện tư duy logic để chuẩn bị học các công nghệ
+              chuyên sâu hơn ở các học kỳ tiếp theo.
+            </p>
+          </div>
+
+          <div class="card glass-card">
+            <h3>
+              <i class="fa-solid fa-code"></i> Kiến thức & Công cụ thực hành
+            </h3>
+            <div class="skills-grid">
+              <div class="skill-item">
+                <i class="fa-brands fa-html5"></i>
+                <div>HTML5</div>
+              </div>
+              <div class="skill-item">
+                <i class="fa-brands fa-css3-alt"></i>
+                <div>CSS3 / Flexbox</div>
+              </div>
+              <div class="skill-item">
+                <i class="fa-brands fa-js"></i>
+                <div>JavaScript (DOM)</div>
+              </div>
+              <div class="skill-item">
+                <i class="fa-brands fa-java"></i>
+                <div>Java (OOP)</div>
+              </div>
+              <div class="skill-item">
+                <i class="fa-brands fa-python"></i>
+                <div>Python cơ bản</div>
+              </div>
+              <div class="skill-item">
+                <i class="fa-brands fa-git-alt"></i>
+                <div>Git / GitHub</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- III. HỌC VẤN & QUÁ TRÌNH HỌC TẬP -->
+      <section id="experience">
+        <h2 class="section-title">Học Vấn & Hoạt Động</h2>
+        <div class="grid-2">
+          <div class="card glass-card">
+            <h3>
+              <i class="fa-solid fa-graduation-cap"></i> Quá trình học tập
+            </h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <h4>Sinh viên Năm 2 - Ngành Công nghệ Thông tin</h4>
+                <span>2024 - Hiện tại | Trường Đại học</span>
+                <p>
+                  Đang theo học các môn cơ sở ngành và chuyên ngành: Lập trình
+                  Web, Cấu trúc dữ liệu & Giải thuật, Cơ sở dữ liệu.
+                </p>
+              </div>
+              <div class="timeline-item">
+                <h4>Bài tập lớn & Hoạt động nhóm</h4>
+                <span>2024 - 2025</span>
+                <p>
+                  Tích cực tham gia làm việc nhóm, phân tích yêu cầu bài tập và
+                  hoàn thiện giao diện cho các đồ án môn học.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card glass-card">
+            <h3><i class="fa-solid fa-award"></i> Định hướng & Sở thích</h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <h4>Tự học & Rèn luyện kỹ năng</h4>
+                <span>FreeCodeCamp & Tài liệu chuẩn W3Schools</span>
+                <p>
+                  Chủ động tự tìm hiểu thêm cách dàn trang chuẩn Responsive và
+                  thực hành cắt web mẫu sau giờ học.
+                </p>
+              </div>
+              <div class="timeline-item">
+                <h4>Sở thích cá nhân</h4>
+                <p>
+                  Tìm hiểu các xu hướng giao diện web mới, chơi đá bóng, nghe
+                  nhạc và giải trí cùng bạn bè sau những giờ học căng thẳng.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- IV. DỰ ÁN MÔN HỌC -->
+      <section id="projects">
+        <h2 class="section-title">Dự Án Thực Hành</h2>
+
+        <div class="filter-btns">
+          <button class="filter-btn active" data-filter="all">Tất cả</button>
+          <button class="filter-btn" data-filter="web">Web App</button>
+          <button class="filter-btn" data-filter="landing">Landing Page</button>
+        </div>
+
+        <div class="projects-grid">
+          <div class="project-card glass-card" data-category="web">
+            <img
+              src="Dự án 1.png"
+              alt="Dự án Chè dưỡng nhan"
+              class="project-img"
+              onerror="
+                this.src =
+                  'https://via.placeholder.com/400x220?text=Che+Duong+Nhan'
+              "
+            />
+            <div class="project-info">
+              <h3>Chè dưỡng nhan</h3>
+              <p>
+                Dự án thực hành môn học thiết kế giao diện bán hàng trực tuyến.
+              </p>
+              <div class="project-tags">
+                <span class="tag">HTML5</span>
+                <span class="tag">Flexbox</span>
+                <span class="tag">JavaScript</span>
+              </div>
+              <div class="project-links">
+                <a href="#" target="_blank"
+                  ><i class="fa-solid fa-external-link"></i> Xem Demo</a
+                >
+                <a href="#" target="_blank"
+                  ><i class="fa-brands fa-github"></i> GitHub</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card glass-card" data-category="landing">
+            <img
+              src="Dự án 2.png"
+              alt="Nến thơm Hoa Lâm"
+              class="project-img"
+              onerror="
+                this.src =
+                  'https://via.placeholder.com/400x220?text=Nen+Thom+Hoa+Lam'
+              "
+            />
+            <div class="project-info">
+              <h3>Nến thơm Hoa Lâm</h3>
+              <p>
+                Website giới thiệu và trưng bày sản phẩm thương hiệu nến thơm.
+              </p>
+              <div class="project-tags">
+                <span class="tag">HTML5</span>
+                <span class="tag">CSS Grid</span>
+                <span class="tag">Animations</span>
+              </div>
+              <div class="project-links">
+                <a href="#" target="_blank"
+                  ><i class="fa-solid fa-external-link"></i> Xem Demo</a
+                >
+                <a href="#" target="_blank"
+                  ><i class="fa-brands fa-github"></i> GitHub</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- V. LIÊN HỆ -->
+      <section id="contact">
+        <h2 class="section-title">Liên Hệ Với Tôi</h2>
+        <div class="card glass-card contact-card">
+          <form id="contactForm">
+            <div class="form-group">
+              <input
+                type="text"
+                id="nameInput"
+                placeholder="Họ và tên của bạn"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="email"
+                id="emailInput"
+                placeholder="Địa chỉ Email"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <textarea
+                id="messageInput"
+                placeholder="Nội dung tin nhắn..."
+                rows="4"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn">
+              Gửi tin nhắn <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>&copy; 2026 Lê Tấn Phát. Bài tập lớn môn Lập trình Web.</p>
+    </footer>
+
+    <!-- NÚT SCROLL TO TOP -->
+    <button class="scroll-top" id="scrollTopBtn" title="Lên đầu trang">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="toast">Gửi tin nhắn thành công!</div>
+
+    <!-- 🟢 ĐÃ GẮN FILE JAVASCRIPT XỬ LÝ SỰ KIỆN NẮNG / MƯA NẰM CHUNG THƯ MỤC -->
+    <script src="bài-giữa-kỳ-thiết-kế-web.js"></script>
+  </body>
+</html>

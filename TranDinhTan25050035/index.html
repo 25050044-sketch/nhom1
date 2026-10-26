@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styte.css">
+</head>
+<body class="dark-mode">
+
+    
+    <header class="header">
+       
+        <div class="container nav-container">
+            <a href="#home" class="logo"><span>My Portfolio</span></a>
+            
+            <nav class="navbar" id="navbar">
+                <ul>
+                    <li><a href="#home" class="nav-link active">Trang chủ</a></li>
+                    <li><a href="#about" class="nav-link">Giới thiệu</a></li>
+                    <li><a href="#skills" class="nav-link">Kỹ năng</a></li>
+                    <li><a href="#projects" class="nav-link">Dự án</a></li>
+                    <li><a href="#experience" class="nav-link">Học vấn & Hoạt động</a></li>
+                    <li><a href="#contact" class="nav-link">Liên hệ</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-btn" aria-label="Đổi giao diện">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <span class="badge">Thông tin cá nhân</span>
+                <h1>Trần Đình Tân</h1>
+                <h2>Sinh viên CNTT</h2>
+                <p>Sinh viên năm 2 nhà phát triển ứng dụng, web, game</p>
+                <div class="hero-btns">
+                    <a href="#projects" class="btn btn-primary">Xem Dự Án <i class="fas fa-arrow-right"></i></a>
+                    <a href="#contact" class="btn btn-outline">Liên Hệ Ngay</a>
+                </div>
+            </div>
+            <div class="hero-img">
+                <div class="img-wrapper">
+                    <img src="anhhoso.jpg" alt="hoso">
+                </div>
+            </div>
+        </div>
+    </section>
+
+  
+    <section id="about" class="about section-padding">
+        <div class="container">
+            <h2 class="section-title"><span>Giới Thiệu Bản Thân</span></h2>
+            <div class="about-grid">
+                <div class="about-card">
+                    <i class="fas fa-user-graduate icon"></i>
+                    <h3>Thông Tin Cá Nhân</h3>
+                    <ul>
+                        <li><strong>Tên:</strong> Trần Đình Tân</li>
+                        <li><strong>Trường:</strong> Đại học Bình Dương</li>
+                        <li><strong>Chuyên ngành:</strong> Công nghệ Thông tin</li>
+                        <li><strong>Vị trí hướng tới:</strong> Developer </li>
+                    </ul>
+                </div>
+
+                <div class="about-card">
+                    <i class="fas fa-bullseye icon"></i>
+                    <h3>Mục Tiêu Nghề Nghiệp</h3>
+                    <p><strong>Ngắn hạn:</strong> Nắm vững các cấu trúc dữ liệu, giải thuật và các ngôn ngữ lập trình</p>
+                    <p><strong>Dài hạn:</strong> Nhà phát triển ứng dụng web chuyên nghiệp</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="skills" class="skills section-padding alt-bg">
+        <div class="container">
+            <h2 class="section-title"><span>Kỹ Năng Chuyên Môn</span></h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>C#</span>
+                        <span>70%</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress" style="width: 70%;"></div></div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>Python</span>
+                        <span>100%</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress" style="width: 100%;"></div></div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>HTML5 / CSS3 / JavaScript</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress" style="width: 80%;"></div></div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>C++</span>
+                        <span>100%</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress" style="width: 100%;"></div></div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>SQL</span>
+                        <span>70%</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress" style="width: 70%;"></div></div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>java</span>
+                        <span>60%</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress" style="width: 60%;"></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="projects" class="projects section-padding">
+        <div class="container">
+            <h2 class="section-title"><span> Dự Án Cá Nhân</span></h2>
+            
+            
+            <div class="project-filter">
+                <button class="filter-btn active" data-filter="all">Tất cả</button>
+                <button class="filter-btn" data-filter="game">Game Dev</button>
+                <button class="filter-btn" data-filter="web">Web Dev</button>
+            </div>
+
+            <div class="projects-grid">
+                
+                <div class="project-card" data-category="game">
+                    <div class="card-img">
+                        <img src="anhduan.jpg" alt="game">
+                    </div>
+                    <div class="card-body">
+                        <span class="category-tag">Game Dev</span>
+                        <h3>Wolvesville game</h3>
+                        <p>Game nhập vai, hành động</p>
+                        <div class="tech-stack">
+                            <span>Html</span>
+                            <span>Css</span>
+                            <span>Js</span>
+                            <span>SQL</span>
+                        </div>
+                        <div class="card-links">
+                            <button class="btn-sm open-modal-btn" data-modal="modal">Chi tiết</button>
+                            <a href="#" class="btn-sm outline" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="project-card" data-category="web">
+                    <div class="card-img">
+                        <img src="anhduan1.png" alt="duan">
+                    </div>
+                    <div class="card-body">
+                        <span class="category-tag">Web Dev</span>
+                        <h3>TechStore - Website Bán Hàng</h3>
+                        <p>Trang web thương mại điện tử bán thiết bị công nghệ với giỏ hàng tương tác và bộ lọc sản phẩm thông minh.</p>
+                        <div class="tech-stack">
+                            <span>Html</span>
+                            <span>Css</span>
+                            <span>Js</span>
+                            <span>SQL</span>
+                        </div>
+                        <div class="card-links">
+                            <button class="btn-sm open-modal-btn" data-modal="modal-web">Chi tiết</button>
+                            <a href="#" class="btn-sm outline" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="experience" class="experience section-padding alt-bg">
+        <div class="container">
+            <h2 class="section-title"><span>Học Vấn & Sở Thích</span></h2>
+            <div class="exp-grid">
+                <div class="exp-column">
+                    <h3><i class="fas fa-graduation-cap"></i> Học Vấn & Thành Tích</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <span class="date">2025 - Hiện tại</span>
+                            <h4>Sinh viên Khoa CNTT</h4>
+                            <p>Trường Đại học Bình Dương</p>
+                            <small>Tập trung học tập lập trình ứng dụng, thiết kế web và phát triển phần mềm.</small>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="date">2026</span>
+                            <h4>Dự án Game</h4>
+                            <p>Thành viên nhóm lập trình</p>
+                            <small>Xây dựng logic game, thiết kế quy trình xử lý va chạm và hoạt ảnh nhân vật.</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exp-column">
+                    <h3><i class="fas fa-heart"></i> Sở Thích & Hoạt Động</h3>
+                    <div class="hobbies-list">
+                        <div class="hobby-card">
+                            <i class="fas fa-running"></i>
+                            <div>
+                                <h4>Chạy bộ</h4>
+                                <p>Rèn luyện sức khỏe</p>
+                            </div>
+                        </div>
+                        <div class="hobby-card">
+                            <i class="fas fa-code"></i>
+                            <div>
+                                <h4>Lập trình</h4>
+                                <p>Lập trình ứng dụng web game</p>
+                            </div>
+                        </div>
+                        <div class="hobby-card">
+                            <i class="fas fa-music"></i>
+                            <div>
+                                <h4>Âm nhạc</h4>
+                                <p>Nghe nhạc</p>
+                            </div>
+                        </div>
+                        <div class="hobby-card">
+                            <i class="fas fa-award"></i>
+                            <div>
+                                <h4>Tín chỉ</h4>
+                                <p>Mos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="contact" class="contact section-padding">
+        <div class="container">
+            <h2 class="section-title"><span>Liên Hệ</span></h2>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Thông Tin Trực Tiếp</h3>
+                    <p>Hãy gửi tin nhắn nếu bạn muốn trao đổi công việc và hợp tác</p>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>tandev@gmail.com</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-location-dot"></i>
+                        <span>Thủ Dầu Một, TPHCM, Việt Nam</span>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <form id="contact-form" class="contact-form" novalidate>
+                    <div class="form-group">
+                        <label for="name">Họ và tên *</label>
+                        <input type="text" id="name" name="name" placeholder="Nhập họ và tên của bạn">
+                        <span class="error-msg" id="name-error">Vui lòng nhập họ tên!</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email liên hệ *</label>
+                        <input type="email" id="email" name="email" placeholder="Nhập địa chỉ Email">
+                        <span class="error-msg" id="email-error">Vui lòng nhập email hợp lệ!</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Lời nhắn *</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Nhập nội dung tin nhắn..."></textarea>
+                        <span class="error-msg" id="message-error">Nội dung tin nhắn không được để trống!</span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Gửi Tin Nhắn <i class="fas fa-paper-plane"></i></button>
+                    <div id="form-success" class="success-msg"><i class="fas fa-check-circle"></i> Tin nhắn của bạn đã được gửi thành công!</div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+  
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Trần Đình Tân <i class="fas fa-heart text-danger"></i></p>
+        </div>
+    </footer>
+
+   
+    <button id="scroll-to-top" class="scroll-top-btn" aria-label="Lên đầu trang">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    
+  
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Wolvesville Game Web App</h2>
+        <img src="anhduan.jpg" alt="Wolvesville Game">
+        
+        <p><strong>Mô tả chi tiết:</strong> Dự án mô phỏng/phát triển giao diện và cơ chế tương tác của tựa game Ma Sói Wolvesville trên nền tảng Web với đầy đủ menu chức năng và hệ thống nhiệm vụ sinh động.</p>
+        
+        <p><strong>Công nghệ sử dụng:</strong> HTML5, CSS3, JavaScript , SQL Database.</p>
+        
+        <h3>Tính năng chính:</h3>
+        <ul>
+            <li>Giao diện menu chính tương tác: Play, Inventory, Shop, Clan, Roles.</li>
+            <li>Hệ thống theo dõi tiến trình nhiệm vụ (Challenges) và Battle Pass.</li>
+            <li>Lưu trữ thông tin người dùng và vật phẩm bằng cơ sở dữ liệu SQL.</li>
+            <li>Tối ưu trải nghiệm mượt mà, phản hồi nhanh trên trình duyệt.</li>
+        </ul>
+    </div>
+</div>
+
+    
+
+<div class="modal" id="modal-web">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>TechStore - Website Bán Hàng & Build PC</h2>
+        <img src="anhduan1.png" alt="TechStore Demo" style="width:100%; border-radius:8px; margin: 10px 0;">
+        
+        <p><strong>Mô tả dự án:</strong> Website thương mại điện tử chuyên kinh doanh thiết bị công nghệ và hỗ trợ công cụ Build PC trực tuyến với giao diện hiện đại, tối ưu trải nghiệm người dùng.</p>
+        
+        <p><strong>Công nghệ sử dụng:</strong> HTML5, CSS3, JavaScript , SQL Database.</p>
+        
+        <h3>Tính năng chính:</h3>
+        <ul>
+            <li>Công cụ hỗ trợ người dùng tự lựa chọn và xây dựng cấu hình PC theo ngân sách.</li>
+            <li>Bộ lọc tìm kiếm sản phẩm thông minh theo danh mục (Laptop, PC Gaming, Đồ họa).</li>
+            <li>Xử lý giỏ hàng mượt mà, tự động tính tổng tiền không cần tải lại trang.</li>
+            <li>Kiểm tra và xác thực dữ liệu đơn hàng (Form Validation) trước khi gửi dữ liệu.</li>
+        </ul>
+    </div>
+</div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>

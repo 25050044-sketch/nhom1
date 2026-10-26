@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <title>Portfolio</title>
+</head>
+<body>
+   <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a href="index.html" class="navbar-brand fw-bold text-uppercase ">My Portfolio</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto justify-content-end">
+                        <li class="nav-item"><a href="#about" class="nav-link">Giới Thiệu</a></li>
+                        <li class="nav-item"><a href="#skills" class="nav-link">Kĩ năng</a></li>
+                        <li class="nav-item"><a href="#projects" class="nav-link">Dự án</a></li>
+                        <li class="nav-item"><a href="#contact" class="nav-link">Liên hệ</a></li>
+                        <button class="btn btn-outline-light ms-lg-3 rounded-circle" id="themeToggle" title="Chuyen doi sang toi">
+                          <i class="fa-solid fa-moon"></i>
+                        </button>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+   </header>
+  <main>
+    
+    <section id="about" class="py-5">
+      <div class="container py-4">
+        <div class="text-center mb-5">
+          <h2 class="fw-bold text-uppercase section-title">Giới Thiệu Bản Thân</h2>
+          <div class="title-line mx-auto"></div>
+        </div>
+      </div>
+      <div id="aboutcarousel" class="carousel slide">
+        <div class="carousel-indicators mb-0">
+          <button type="button" data-bs-target="#aboutcarousel" data-bs-slide-to="0" class="active bg-primary" aria-current="true" aria-label="slide 1"></button>
+          <button type="button" data-bs-target="#aboutcarousel" data-bs-slide-to="1" class="bg-primary" aria-label="slide 2"></button>
+        </div>
+        <div class="carousel-inner pb-4">
+          <div class="carousel-item active">
+            <div class="row align-items-center g-4 px-md-5">
+              <div class="col-lg-4 text-center">
+                <img src="img/anh1.jpg" alt="" class=" rounded-circle" width="150px" height="150px">
+              </div>
+              <div class="col-lg-8">
+                <span class="badge bg-primary mb-2">Thông tin cá nhân</span>
+                <h3 class="fw-bold text-primary">Nguyễn Hữu Phước</h3>
+                <p class="fw-semibold text-muted">Sinh viên ngành công nghệ thông tin</p>
+                <p class="lead text-dark fs-6">Tôi là sinh viên năm 2 hiện đang học ngành công nghệ thông tin muốn hướng đến phát triển web/app, game, sáng tạo. Tôi luôn chủ động học hỏi các công nghệ mới để nâng cao kĩ năng lập trình và giải quyết vấn đề.</p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row align-items-center justify-content-center g-4 px-md-5">
+              <div class="col-md-4 text-center">
+                <div class="bg-danger-subtle text-danger p-2 rounded-circle d-inline-flex align-items-cemter justify-content-center shadow-sm">
+                  <i class="fa-solid fa-bullseye "></i>
+                </div>
+              </div>
+              <div class="col-lg-8">
+                <span class="badge bg-danger mb-2">Định hướng tương lai</span>
+                <h3 class="fw-bold text-dager">Mục tiêu nghề nghiệp</h3>
+                <h6 class="fw-bold text-dark mb-1"><i class="bi bi-star-fill text-warning me-2">Mục tiêu:</i></h6>
+                <p class="text-secondary mb-0">Mong muốn trở thành người phát triển web/app ứng dụng, game</p>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#aboutcarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#aboutcarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+            <span class="visually-hidden">next</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="py-5 bg-light">
+      <div class="container py-4">
+        <div class="text-center mb-5">
+          <h2 class="fw-bold text-uppercase section-title">Kỹ năng & học vấn</h2>
+          <div class="title-line mx-auto"></div>
+        </div>
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <div class="p-4 bg-white rounded-4 shadow-sm h-100 border-0">
+              <div class="d-flex align-items-cemter mb-2">
+                <div>
+                  <h4 class="fw-bold mb-0">Kỹ năng chuyên môn</h4>
+                  <small class="text-muted">Công nghệ & công cụ sử dụng</small>
+                </div>
+              </div>
+              <div class="row g-3">
+                <div class="col-sm-6">
+                  <div class="skill-card p-3 rounded-3 border d-flex align-items-cemter">                  
+                    <h6 class="fw-bold mb-0">HTML5 / CSS</h6>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="skill-card p-3 rounded-3 border d-flex align-items-cemter">
+                  <h6 class="fw-bold mb-0">JavaScript </h6>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="skill-card p-3 rounded-3 border d-flex align-items-cemter">
+                  <h6 class="fw-bold mb-0">python / java </h6>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="skill-card p-3 rounded-3 border d-flex align-items-cemter">
+                  <h6 class="fw-bold mb-0">Database: SQL / Backend: Php(Laravel)</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="p-4 bg-white rounded-4 shadow-sm h-100 border-0">
+              <div class="d-flex align-items-cemter mb-4">
+                <div>
+                  <h4 class="fw-bold mb-0 text-dark">Học vấn & kinh nghiệm</h4>
+                </div>
+              </div>  
+              <div class="custom-timeline mb-4 position-relative">
+                <span class="timeline-dot bg-primary shadow-sm"></span>
+                <div class="bg-light p-3 rounded-3 border-start border-primary border-4 shadow-sm">
+                  <div class="d-flex jusitify-content-between  align-items-center mb-1">
+                    <h6 class="fw-bold mb-0 text-dark">Đại Học - ngành CNTT</h6>
+                    <span class=" badge bg-primary">2025 - Hien tai</span>
+                  </div>
+                </div>
+              </div>
+              <div class="custom-timeline mb-4 position-relative">
+                <span class="timeline-dot bg-primary shadow-sm"></span>
+                <div class="bg-light p-3 rounded-3 border-start border-primary border-4 shadow-sm">
+                  <div class="d-flex jusitify-content-between  align-items-center mb-1">
+                    <h6 class="fw-bold mb-0 text-dark">Tham gia CLB Sach</h6>
+                    <span class="badge bg-primary">2025 - Hien tai</span>
+                  </div>
+                </div>
+              </div>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  
+    <section id="projects" class="py-5">
+      <div class="container py-4">
+        <div class="text-center mb-4">
+          <h2 class="fw-bold text-uppercase section-title">Dự Án Cá Nhân</h2>
+          <div class="title-line mx-auto mb-4"></div>
+          <div class="btn-group filter-buttons mb-4" role="group">
+            <button type="button" class="btn btn-outline-primary active" data-filter="all">Tất cả</button>
+            <button type="button" class="btn btn-outline-primary" data-filter="web">Web App</button>
+            <button type="button" class="btn btn-outline-primary" data-filter="tool">Công cụ JS</button>
+          </div>
+        </div>
+        <div class="row g-4" id="projectGrid">
+          <div class="col-md-6 col-lg-4 project-item" data-category="web">
+            <div class="card h-100 project-card shadow-sm border-0 overflow-hidden">
+              <div class="card-img-wrapper overflow-hidden position-relative">
+                <img src="img/anh2.png" alt="" class="card-img-top">
+                <div class="card-overplay d-flex align-items-cemter justify-content-center gap-2">
+                  <a href="https://phuoc-developer.github.io/my_app/" class="btn btn-light btn-sm rounded-circle shadow p-2"><i class="fa-solid fa-link text-primary"></i></a>
+                  <a href="https://phuoc-developer.github.io/my_app/" class="btn btn-light btn-sm rounded-circle shadow p-2"><i class="fa-brands fa-github text-primary"></i></a>
+                </div>
+              </div>
+              <div class="card-body">
+                <span class="badge bg-primary-outline text-primary border-primary-subtle rounded-pill mb-2"><i class="fa-solid fa-globe me-1"></i>Web App</span>
+                <h5 class="card-title fw-bold">Website bán trà sữa TocoTocoTea</h5>
+                <p class="card-text text-secondary small">Giao diện thân thiện, dễ dùng, dành cho khách hàng mua trực tuyến dễ dành</p>
+                <p class="text-dark mb-0 small"><strong>Công nghệ: </strong> html/css/js/bootstrap5, database:sql/phpMyadmin, backend: php(frameworklaravel)</p>
+              </div>
+              <div class="card-footer bg-white border-0 pd-3 pt-0">
+                <a href=" https://phuoc-developer.github.io/my_app/" class="btn btn-sm btn-primary rounded-pill me-2"><i class="fa-solid fa-arrow-up-right-from-square me-1"></i>Demo</a>
+                <a href=" https://phuoc-developer.github.io/my_app/" class="btn btn-sm btn-outline-dark rounded-pill"><i class="fa-brands fa-github me-1"></i>GitHub</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 project-item" data-category="web">
+            <div class="card h-100 project-card shadow-sm border-0 overflow-hidden">
+              <div class="card-img-wrapper overflow-hidden position-relative">
+                <img src="img/anh3.png" alt="" class="card-img-top">
+                <div class="card-overplay d-flex align-items-cemter justify-content-center gap-2">
+                  <a href="https://phuoc-developer.github.io/eshop/" class="btn btn-light btn-sm rounded-circle shadow p-2"><i class="fa-solid fa-link text-primary"></i></a>
+                  <a href="https://phuoc-developer.github.io/eshop/" class="btn btn-light btn-sm rounded-circle shadow p-2"><i class="fa-brands fa-github text-primary"></i></a>
+                </div>
+              </div>
+              <div class="card-body">
+                <span class="badge bg-primary-outline text-primary border-primary-subtle rounded-pill mb-2"><i class="fa-solid fa-globe me-1"></i>Web App</span>
+                <h5 class="card-title fw-bold">Website bán hàng quần áo</h5>
+                <p class="card-text text-secondary small">Giao diện thân thiện, giúp cho mọi người lựa chọn những mẫu thời trang đẹp</p>
+                <p class="text-dark mb-0 small"><strong>Công nghệ: </strong> html/css/js/bootstrap5, database:sql/phpMyadmin, backend: php(framework laravel)</p>
+              </div>
+              <div class="card-footer bg-white border-0 pd-3 pt-0">
+                <a href="https://phuoc-developer.github.io/eshop/" class="btn btn-sm btn-primary rounded-pill me-2"><i class="fa-solid fa-arrow-up-right-from-square me-1"></i>Demo</a>
+                <a href="https://phuoc-developer.github.io/eshop/" class="btn btn-sm btn-outline-dark rounded-pill"><i class="fa-brands fa-github me-1"></i>GitHub</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 project-item" data-category="web">
+            <div class="card h-100 project-card shadow-sm border-0 overflow-hidden">
+              <div class="card-img-wrapper overflow-hidden position-relative">
+                <img src="img/anh4.png" alt="" class="card-img-top">
+                <div class="card-overplay d-flex align-items-cemter justify-content-center gap-2">
+                  <a href=" https://phuoc-developer.github.io/phan_mem_thi_online/" class="btn btn-light btn-sm rounded-circle shadow p-2"><i class="fa-solid fa-link text-primary"></i></a>
+                  <a href=" https://phuoc-developer.github.io/phan_mem_thi_online/" class="btn btn-light btn-sm rounded-circle shadow p-2"><i class="fa-brands fa-github text-primary"></i></a>
+                </div>
+              </div>
+              <div class="card-body">
+                <span class="badge bg-primary-outline text-primary border-primary-subtle rounded-pill mb-2"><i class="fa-solid fa-globe me-1"></i>Web App</span>
+                <h5 class="card-title fw-bold">Website hệ thống thi online dành cho học sinh</h5>
+                <p class="card-text text-secondary small">Giao diện giúp cho học sinh thi online, phù hợp với các thầy cô muốn kiểm tra, theo dõi học sinh, học lực bảng điểm từng học sinh đó</p>
+                <p class="text-dark mb-0 small"><strong>Công nghệ: </strong> html/css/js/bootstrap5, database:sql/phpMyadmin, backend: php(framework laravel)</p>
+                <p class="text-warning rounded-pill border-4 me-2">Đang trong giai đoạn phát triển </p>
+              </div>
+              <div class="card-footer bg-white border-0 pd-3 pt-0">
+                <a href=" https://phuoc-developer.github.io/phan_mem_thi_online/" class="btn btn-sm btn-primary rounded-pill me-2"><i class="fa-solid fa-arrow-up-right-from-square me-1"></i>Demo</a>
+                <a href=" https://phuoc-developer.github.io/phan_mem_thi_online/" class="btn btn-sm btn-outline-dark rounded-pill"><i class="fa-brands fa-github me-1"></i>GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="certificates" class="py-5 bg-light">
+      <div class="container py-4">
+        <div class="text-center mb-5">
+          <h2 class="fw-bold text-uppercase section-title">Chứng Chỉ & Sở Thích</h2>
+          <div class="title-line mx-auto"></div>
+        </div>
+        <div class="row g-4 text-center">
+          <div class="col-md-4">
+            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+              <h5 class="fw-bold">Chứng Chỉ</h5>
+              <p class="text-muted small">Chứng chỉ THCB</p>
+            </div>
+          </div>
+           <div class="col-md-4">
+            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+              <h5 class="fw-bold">Chứng Chỉ</h5>
+              <p class="text-muted small">Chứng chỉ VSTEP B1</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-4 bg-white rounded-3 shadow-sm h-100">
+              <h5 class="fw-bold">Sở Thích</h5>
+              <p class="text-muted small">tìm hiểu về công nghệ mới, đọc sách</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-5">
+      <div class="container py-4">
+        <div class="text-center mb-5">
+          <h2 class="fw-bold text-uppercase section-title">Liên Hệ</h2>
+          <div class="title-line mx-auto"></div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="card p-4 shadow-sm border-0 rounded-3">
+              <form id="contactForm" method="post">
+                <div class="mb-3">
+                  <label for="fullName" class="form-label fw-semibold">Họ và tên <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="fullName" placeholder="Nhập họ tên của bạn">
+                  <div class="invalid-feedback" id="nameError">Vui lòng nhập họ và tên (ít nhất 3 ký tự).</div>
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label fw-semibold">Email <span class="text-danger">*</span></label>
+                  <input type="email" class="form-control" id="email" placeholder="example@domain.com">
+                  <div class="invalid-feedback" id="emailError">Vui lòng nhập đúng định dạng email.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="message" class="form-label fw-semibold">Tin nhắn <span class="text-danger">*</span></label>
+                  <textarea class="form-control" id="message" rows="4" placeholder="Nội dung tin nhắn..."></textarea>
+                  <div class="invalid-feedback" id="messageError">Vui lòng nhập nội dung tin nhắn.</div>
+                </div>
+                <button type="submit" class="btn btn-primary w-100 py-2 rounded-pill fw-bold">GỬI TIN NHẮN</button>
+              </form>
+              <div id="formSuccessAlert" class="alert alert-success mt-3 d-none" role="alert">
+                <i class="bi bi-check-circle-fill me-2"></i> Cảm ơn bạn! Tin nhắn đã được gửi thành công.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <button id="scrollTopBtn" class="btn btn-primary rounded-circle shadow">
+    <i class="fa fa-arrow-up"></i>
+  </button>
+
+  <footer class="bg-dark text-white text-center py-3">
+    <div class="container">
+      <p class="mb-0 small">&copy; 2026 Nguyễn Hữu Phước- Portfolio Cá Nhân. Đã bảo lưu mọi quyền.</p>
+    </div>
+  </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.js"></script>
+</body>
+</html>
